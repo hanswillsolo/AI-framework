@@ -132,7 +132,8 @@ void AIManager::keyDown(WPARAM param)
 	const WPARAM key_a = 65;
 	const WPARAM key_s = 83;
     const WPARAM key_t = 84;
-
+    const WPARAM key_space = 14757395258967641292;
+    //const WPARAM key_space = ;
     switch (param)
     {
         case VK_NUMPAD0:
@@ -153,6 +154,11 @@ void AIManager::keyDown(WPARAM param)
         case key_a:
         {
             OutputDebugStringA("a Down \n");
+            break;
+        }
+        case key_space:
+        {
+            m_pCar->setPositionTo(Position(9, 3));
             break;
         }
 		case key_s:
