@@ -105,7 +105,7 @@ void AIManager::update(const float fDeltaTime)
 void AIManager::mouseUp(int x, int y)
 {
 	// get a waypoint near the mouse click, then set the car to move to the this waypoint
-	Waypoint* wp = m_waypointManager.getNearestWaypoint(Vector2D(x, y));
+ 	Waypoint* wp = m_waypointManager.getNearestWaypoint(Vector2D(x, y));
 	if (wp == nullptr)
 		return;
 
@@ -132,7 +132,7 @@ void AIManager::keyDown(WPARAM param)
 	const WPARAM key_a = 65;
 	const WPARAM key_s = 83;
     const WPARAM key_t = 84;
-    const WPARAM key_space = 14757395258967641292;
+    const WPARAM key_space = 32;
     //const WPARAM key_space = ;
     switch (param)
     {
@@ -158,7 +158,7 @@ void AIManager::keyDown(WPARAM param)
         }
         case key_space:
         {
-            m_pCar->setPositionTo(Position(9, 3));
+            m_pCar->setPositionTo(Vector2D(9, 3));
             break;
         }
 		case key_s:
@@ -251,7 +251,7 @@ bool AIManager::checkForCollisions()
     // does the car bounding sphere collide with the pickup bounding sphere?
     if (boundingSphereCar.Intersects(boundingSpherePU))
     {
-        OutputDebugStringA("A collision has occurred!\n");
+        OutputDebugStringA("pickup collision!\n");
         m_pickups[0]->hasCollided();
         setRandomPickupPosition(m_pickups[0]);
 
