@@ -1,2 +1,5 @@
 ﻿  AIManager.cpp
+C:\Users\c014666k\Documents\GitHub\AI-framework\AIFramework 2022(6)\AIFramework 2022\AIFramework 2022\AIManager.cpp(49,13): warning C4189: 'hrai': local variable is initialized but not referenced
+C:\Users\c014666k\Documents\GitHub\AI-framework\AIFramework 2022(6)\AIFramework 2022\AIFramework 2022\AIManager.cpp(98,27): warning C4456: declaration of 'wp' hides previous local declaration
+C:\Users\c014666k\Documents\GitHub\AI-framework\AIFramework 2022(6)\AIFramework 2022\AIFramework 2022\AIManager.cpp(94,15): message : see declaration of 'wp'
   AIFramework.vcxproj -> C:\Users\c014666k\Documents\GitHub\AI-framework\AIFramework 2022(6)\AIFramework 2022\AIFramework 2022\x64\Debug\AIFramework.exe

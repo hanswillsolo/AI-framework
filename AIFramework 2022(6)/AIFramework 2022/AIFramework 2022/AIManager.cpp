@@ -9,6 +9,7 @@
 AIManager::AIManager()
 {
 	m_pCar = nullptr;
+    m_aiCar = nullptr;
 }
 
 AIManager::~AIManager()
@@ -28,6 +29,9 @@ void AIManager::release()
 
 	delete m_pCar;
 	m_pCar = nullptr;
+    delete m_aiCar;
+    m_aiCar = nullptr;
+
 }
 
 HRESULT AIManager::initialise(ID3D11Device* pd3dDevice)
@@ -39,6 +43,11 @@ HRESULT AIManager::initialise(ID3D11Device* pd3dDevice)
     m_pCar = new Vehicle();
     HRESULT hr = m_pCar->initMesh(pd3dDevice, carColour::blueCar);
     m_pCar->setVehiclePosition(Vector2D(xPos, yPos));
+    if (FAILED(hr))
+        return hr;
+    m_aiCar = new Vehicle();
+    HRESULT hrai = m_aiCar->initMesh(pd3dDevice, carColour::redCar);
+    m_aiCar->setVehiclePosition(Vector2D(0, 0));
     if (FAILED(hr))
         return hr;
 
@@ -81,7 +90,7 @@ void AIManager::update(const float fDeltaTime)
     }
 
 	// draw the waypoints nearest to the car
-	/*
+	
     Waypoint* wp = m_waypointManager.getNearestWaypoint(m_pCar->getPosition());
 	if (wp != nullptr)
 	{
@@ -91,7 +100,7 @@ void AIManager::update(const float fDeltaTime)
 			AddItemToDrawList(wp);
 		}
 	}
-    */
+    
 
     // update and draw the car (and check for pickup collisions)
 	if (m_pCar != nullptr)
@@ -100,6 +109,13 @@ void AIManager::update(const float fDeltaTime)
 		checkForCollisions();
 		AddItemToDrawList(m_pCar);
 	}
+    if (m_aiCar != nullptr)
+    {
+        m_aiCar->update(fDeltaTime);
+        checkForCollisions();
+        AddItemToDrawList(m_aiCar);
+    }
+
 }
 
 void AIManager::mouseUp(int x, int y)

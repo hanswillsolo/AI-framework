@@ -28,6 +28,8 @@ private:
 	vecPickups              m_pickups;
 	Vehicle*				m_pCar = nullptr;
 	WaypointManager			m_waypointManager;
+	Vehicle* m_aiCar = nullptr;
+	vecPickups              m_aipickups;
 
 };
 
